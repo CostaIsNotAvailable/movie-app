@@ -4,7 +4,7 @@ import { MovieDetailsComponent, MovieListComponent } from 'src/components';
 
 const routes: Routes = [
   { path: '', component: MovieListComponent },
-  { path: 'movie/:id', component: MovieDetailsComponent },
+  { path: 'movies/:id', component: MovieDetailsComponent },
   { path: '**', component: MovieListComponent }
 ];
 
