@@ -5,14 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 
-import { MovieDetailsComponent, MovieListComponent } from 'src/components';
+import { MovieDetailsComponent, MovieFilterComponent, MovieListComponent } from 'src/components';
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieListComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    MovieFilterComponent
   ],
   imports: [
     BrowserModule,
