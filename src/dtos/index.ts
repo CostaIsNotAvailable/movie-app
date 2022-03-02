@@ -1,1 +1,1 @@
-export { MovieDto } from './movie'
+export { MovieDto } from './movieDto'
