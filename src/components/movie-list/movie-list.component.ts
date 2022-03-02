@@ -19,8 +19,4 @@ export class MovieListComponent implements OnInit {
       this.movies = camelcaseKeys(response, { deep: true });
     });
   }
-
-  showMovie(id: number): void {
-    this.router.navigate(['/movies', { id: id }]);
-  }
 }
