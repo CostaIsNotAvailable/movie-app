@@ -11,6 +11,7 @@ import { MovieDto } from 'src/dtos';
 })
 export class MovieListComponent implements OnInit {
   movies: MovieDto[] = [];
+  filteredMovies: MovieDto[] = []
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -18,5 +19,9 @@ export class MovieListComponent implements OnInit {
     this.http.get<MovieDto[]>('https://movie-api.benoithubert.me/movies').subscribe(response => {
       this.movies = camelcaseKeys(response, { deep: true });
     });
+  }
+
+  filter(filter: (movie: MovieDto) => boolean): void {
+    this.filteredMovies = this.movies.filter(movie => filter(movie));
   }
 }

@@ -1,6 +1,6 @@
+<app-movie-filter (filter)="filter($event)"></app-movie-filter>
 <mat-grid-list cols="4">
-  <app-movie-filter></app-movie-filter>
-  <mat-grid-tile *ngFor="let movie of movies">
+  <mat-grid-tile *ngFor="let movie of filteredMovies">
     <mat-card [routerLink]="['/movies/' +  movie.id]">
       <mat-card-header>
         <mat-card-title>{{movie.title}}</mat-card-title>

@@ -1,2 +1,3 @@
-export { MovieDetailDto } from './movieDetailDto'
-export { MovieDto } from './movieDto'
+export { GenreDto } from './genreDto';
+export { MovieDetailDto } from './movieDetailDto';
+export { MovieDto } from './movieDto';
