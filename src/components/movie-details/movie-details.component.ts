@@ -17,10 +17,6 @@ export class MovieDetailsComponent implements OnInit {
   constructor(private http: HttpClient, private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
-    if (this.movie) {
-      return;
-    }
-
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if (id !== null) {
@@ -30,5 +26,10 @@ export class MovieDetailsComponent implements OnInit {
         });
       }
     });
+  }
+
+  formatISOString(date: string): string {
+    const splittedDate = date.substring(0,10).split('-');
+    return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`;
   }
 }

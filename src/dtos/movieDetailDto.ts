@@ -47,7 +47,7 @@ export interface Company {
 export interface Comment {
   id: number;
   movieId: number;
-  author: string;
   text: string;
   rating: number;
+  date: string;
 }

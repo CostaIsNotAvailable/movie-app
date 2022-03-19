@@ -2,4 +2,14 @@
   <h1>{{movie.title}}</h1>
   <img [src]="movie.posterPath">
   <p>{{movie.overview}}</p>
+  <h2>Comments</h2>
+  <mat-card *ngFor="let comment of movie.comments">
+    <mat-card-title-group>
+      <mat-card-title>{{comment.rating}}</mat-card-title>
+      <mat-card-subtitle>{{formatISOString(comment.date)}}</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+      {{comment.text}}
+    </mat-card-content>
+  </mat-card>
 </div>
