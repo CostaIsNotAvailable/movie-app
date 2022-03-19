@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import * as camelcaseKeys from 'camelcase-keys';
 import { ApiService } from 'src/services';
 import { CommentDto, MovieDetailDto } from 'src/dtos';
 
@@ -10,7 +9,6 @@ import { CommentDto, MovieDetailDto } from 'src/dtos';
   styleUrls: ['./movie-details.component.css']
 })
 export class MovieDetailsComponent implements OnInit {
-
   id?: number;
   movie?: MovieDetailDto;
   comment: Partial<CommentDto> = {};

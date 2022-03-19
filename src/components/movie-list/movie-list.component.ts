@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/services';
 import { Router } from '@angular/router';
-import * as camelcaseKeys from 'camelcase-keys';
 import { MovieDto } from 'src/dtos';
 
 @Component({

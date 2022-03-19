@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ApiService } from 'src/services';
-import * as camelcaseKeys from 'camelcase-keys';
 import { GenreDto, MovieDto } from 'src/dtos';
 
 @Component({
@@ -9,7 +8,6 @@ import { GenreDto, MovieDto } from 'src/dtos';
   styleUrls: ['./movie-filter.component.css']
 })
 export class MovieFilterComponent implements OnInit {
-
   @Output() filter = new EventEmitter<(movie: MovieDto) => boolean>()
 
   genres?: GenreDto[];
