@@ -3,6 +3,21 @@
   <img [src]="movie.posterPath">
   <p>{{movie.overview}}</p>
   <h2>Comments</h2>
+  <mat-card class="form">
+    <mat-card-content>
+      <mat-form-field class="field" appearance="fill">
+        <mat-label>Rating</mat-label>
+        <input [(ngModel)]="comment.rating" matInput>
+      </mat-form-field>
+      <mat-form-field class="field" appearance="fill">
+        <mat-label>Comment</mat-label>
+        <textarea [(ngModel)]="comment.text" matInput></textarea>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="sendComment()" mat-button color="primary">Send</button>
+    </mat-card-actions>
+  </mat-card>
   <mat-card *ngFor="let comment of movie.comments">
     <mat-card-title-group>
       <mat-card-title>{{comment.rating}}</mat-card-title>

@@ -1,10 +1,12 @@
+import { CollectionDto, CommentDto, CompanyDto, GenreDto } from "src/dtos";
+
 export interface MovieDetailDto {
   id: number;
   adult: boolean;
   backdropPath: string;
-  belongsToCollection: Collection;
+  belongsToCollection: CollectionDto;
   budget: number;
-  genres : Genre[];
+  genres : GenreDto[];
   homepage: string;
   imdbId: string;
   originalLanguage: string;
@@ -12,7 +14,7 @@ export interface MovieDetailDto {
   overview: string;
   popularity: number;
   posterPath: string;
-  productionCompanies: Company[];
+  productionCompanies: CompanyDto[];
   revenue: number;
   runtime: number;
   releaseDate: string;
@@ -22,32 +24,5 @@ export interface MovieDetailDto {
   video: boolean;
   voteAverage: number;
   voteCount: number;
-  comments: Comment[];
-}
-
-export interface Collection {
-  id: number;
-  name: string;
-  posterPath: string;
-  backDropPath: string;
-}
-
-export interface Genre {
-  id: number;
-  name: string;
-}
-
-export interface Company {
-  id: number;
-  logoPath: string;
-  name: string;
-  originCountry: string;
-}
-
-export interface Comment {
-  id: number;
-  movieId: number;
-  text: string;
-  rating: number;
-  date: string;
+  comments: CommentDto[];
 }
