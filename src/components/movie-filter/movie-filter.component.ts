@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from 'src/services';
 import * as camelcaseKeys from 'camelcase-keys';
 import { GenreDto, MovieDto } from 'src/dtos';
 
@@ -15,11 +15,11 @@ export class MovieFilterComponent implements OnInit {
   genres?: GenreDto[];
   selectedGenres: number[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.http.get<GenreDto[]>('https://movie-api.benoithubert.me/genres').subscribe(response => {
-      this.genres = camelcaseKeys(response, { deep: true });
+    this.apiService.getGenres().subscribe(genres => {
+      this.genres = genres;
       this.emitFilter();
     });
   }

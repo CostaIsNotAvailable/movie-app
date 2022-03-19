@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from 'src/services';
 import { Router } from '@angular/router';
 import * as camelcaseKeys from 'camelcase-keys';
 import { MovieDto } from 'src/dtos';
@@ -13,11 +13,12 @@ export class MovieListComponent implements OnInit {
   movies: MovieDto[] = [];
   filteredMovies: MovieDto[] = []
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private router: Router, private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.http.get<MovieDto[]>('https://movie-api.benoithubert.me/movies').subscribe(response => {
-      this.movies = camelcaseKeys(response, { deep: true });
+    this.apiService.getMovies().subscribe(movies => {
+      console.log(movies);
+      this.movies = movies;
     });
   }
 

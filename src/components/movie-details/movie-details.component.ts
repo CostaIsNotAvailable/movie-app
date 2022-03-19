@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import * as camelcaseKeys from 'camelcase-keys';
+import { ApiService } from 'src/services';
 import { CommentDto, MovieDetailDto } from 'src/dtos';
 
 @Component({
@@ -15,15 +15,15 @@ export class MovieDetailsComponent implements OnInit {
   movie?: MovieDetailDto;
   comment: Partial<CommentDto> = {};
 
-  constructor(private http: HttpClient, private route: ActivatedRoute,) { }
+  constructor(private route: ActivatedRoute, private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if (id !== null) {
         this.id = +id;
-        this.http.get<MovieDetailDto>(`https://movie-api.benoithubert.me/movies/${this.id}`).subscribe(response => {
-          this.movie = camelcaseKeys(response, { deep: true });
+        this.apiService.getMovie(this.id).subscribe(movie => {
+          this.movie = movie;
         });
       }
     });
@@ -39,10 +39,7 @@ export class MovieDetailsComponent implements OnInit {
       return;
     }
 
-    this.http.post<CommentDto>(
-      `https://movie-api.benoithubert.me/movies/${this.id}/comments`,
-      this.comment
-    ).subscribe(postedComment => {
+   this.apiService.sendComment(this.id, this.comment).subscribe(postedComment => {
       if (!this.movie) {
         return;
       }
